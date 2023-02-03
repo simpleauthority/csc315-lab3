@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 import java.util.Arrays;
 
 public enum Register {

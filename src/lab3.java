@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class lab2 {
+public class lab3 {
     public static void main(final String[] args) {
         if (args.length < 1) {
             System.err.println("Invalid syntax.");
-            System.err.printf("Syntax: java lab2 <file>%n");
+            System.err.printf("Syntax: java lab3 <file>%n");
             System.exit(1);
             return;
         }

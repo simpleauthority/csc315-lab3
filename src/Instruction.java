@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 public abstract class Instruction {
     private final int opcode;
 

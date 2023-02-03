@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 public class IFormatInstruction extends Instruction {
     private int rs;
     private int rt;

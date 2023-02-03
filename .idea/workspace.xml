@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="288de3ff-a09d-4a10-ac45-b5546e6eac74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assembler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IFormatInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InstructionFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstructionFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InvalidInstructionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InvalidInstructionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JFormatInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Opcode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Opcode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFormatInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,24 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/simple/Workspace/school/winter23/csc315/csc315-lab2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/jacobandersen/Workspace/School/Winter 2023/CSC315/lab3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Gradle.csc315-lab2 [build]">
     <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.jacobandersen.calpoly.csc315.lab2.Bootstrap" />
@@ -115,6 +126,7 @@
       <workItem from="1674509301312" duration="1875000" />
       <workItem from="1674524825613" duration="9798000" />
       <workItem from="1674580799234" duration="6309000" />
+      <workItem from="1675451572862" duration="77000" />
     </task>
     <servers />
   </component>

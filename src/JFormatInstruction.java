@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 public class JFormatInstruction extends Instruction {
     private int address;
 

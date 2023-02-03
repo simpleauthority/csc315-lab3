@@ -1,5 +1,3 @@
-//package dev.jacobandersen.calpoly.csc315.lab2;
-
 public class StringUtil {
     /**
      * Converts an integer of known length to a zero-padded binary representation for display
