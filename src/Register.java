@@ -57,4 +57,11 @@ public enum Register {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Invalid register \"%s\" encountered.", registerName)));
     }
+
+    public static Register getByRegisterNumber(final int registerNumber) {
+        return Arrays.stream(Register.values())
+                .filter(reg -> reg.number() == registerNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Invalid register \"%d\" encountered.", registerNumber)));
+    }
 }

@@ -73,4 +73,10 @@ public enum Opcode {
 
         return Pattern.compile("(" + builder.substring(0, builder.length() - 1) + ")");
     }
+
+    public static List<Opcode> getAllByInstructionFormat(InstructionFormat format) {
+        return Arrays.stream(values())
+                .filter(opcode -> opcode.instructionFormat == format)
+                .collect(Collectors.toList());
+    }
 }

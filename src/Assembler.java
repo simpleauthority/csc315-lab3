@@ -77,7 +77,7 @@ public class Assembler {
                 Instruction instruction = null;
                 switch (opcode.instructionFormat()) {
                     case R -> {
-                        RFormatInstruction rInst = new RFormatInstruction(opcode.opcodeBitPattern(), opcode.functBitPattern());
+                        RFormatInstruction rInst = new RFormatInstruction(opcode);
                         int rs, rt, rd, shamt;
                         if (opcode == Opcode.SLL) {
                             rs = 0;
@@ -104,7 +104,7 @@ public class Assembler {
                         instruction = rInst;
                     }
                     case I -> {
-                        IFormatInstruction iInst = new IFormatInstruction(opcode.opcodeBitPattern());
+                        IFormatInstruction iInst = new IFormatInstruction(opcode);
                         int rt = Register.getByRegisterName(arguments[0].trim()).number();
                         int rs, immediate;
 
@@ -156,7 +156,7 @@ public class Assembler {
                         instruction = iInst;
                     }
                     case J -> {
-                        JFormatInstruction jInst = new JFormatInstruction(opcode.opcodeBitPattern());
+                        JFormatInstruction jInst = new JFormatInstruction(opcode);
 
                         String addrStr = arguments[0].trim();
                         int address;

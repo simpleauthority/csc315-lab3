@@ -3,7 +3,7 @@ public class IFormatInstruction extends Instruction {
     private int rt;
     private int imm;
 
-    public IFormatInstruction(final int opcode) {
+    public IFormatInstruction(final Opcode opcode) {
         super(opcode);
     }
 
@@ -35,10 +35,20 @@ public class IFormatInstruction extends Instruction {
     public String assemble() {
         return String.format(
                 "%s %s %s %s",
-                StringUtil.zeroPadBinary(6, opcode()),
+                StringUtil.zeroPadBinary(6, opcode().opcodeBitPattern()),
                 StringUtil.zeroPadBinary(5, rs),
                 StringUtil.zeroPadBinary(5, rt),
                 StringUtil.zeroPadBinary(16, imm)
         );
+    }
+
+    @Override
+    public String toString() {
+        return "IFormatInstruction{" +
+                "opcode=" + opcode() +
+                ", rs=" + rs +
+                ", rt=" + rt +
+                ", imm=" + imm +
+                '}';
     }
 }

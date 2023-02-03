@@ -47,7 +47,10 @@ public class lab3 {
         }
 
         final Assembler assembler = new Assembler(lines);
-        final List<String> assembled = assembler.assemble();
-        assembled.forEach(System.out::println);
+        assembler.assemble();
+
+        final Emulator emulator = new Emulator(assembler.instructions());
+        emulator.emulate();
+        emulator.dumpRegisters();
     }
 }

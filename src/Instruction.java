@@ -1,11 +1,11 @@
 public abstract class Instruction {
-    private final int opcode;
+    private final Opcode opcode;
 
-    public Instruction(final int opcode) {
+    public Instruction(final Opcode opcode) {
         this.opcode = opcode;
     }
 
-    public int opcode() {
+    public Opcode opcode() {
         return opcode;
     }
 
