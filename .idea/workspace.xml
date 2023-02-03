@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="288de3ff-a09d-4a10-ac45-b5546e6eac74" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Emulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IFormatInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Instruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JFormatInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Opcode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Opcode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RFormatInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RFormatInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Emulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +53,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -70,7 +65,7 @@
     <configuration name="lab3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab3" />
       <module name="lab3" />
-      <option name="PROGRAM_PARAMETERS" value="sum_10.asm" />
+      <option name="PROGRAM_PARAMETERS" value="lab3_fib.asm" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,7 +89,7 @@
       <workItem from="1674509301312" duration="1875000" />
       <workItem from="1674524825613" duration="9798000" />
       <workItem from="1674580799234" duration="6309000" />
-      <workItem from="1675451572862" duration="4521000" />
+      <workItem from="1675451572862" duration="10340000" />
     </task>
     <servers />
   </component>

@@ -48,9 +48,12 @@ public class lab3 {
 
         final Assembler assembler = new Assembler(lines);
         assembler.assemble();
+        assembler.labelAddresses().forEach((lab, addr) -> System.out.printf("%s->%d\n", lab, addr));
+        for (int i = 0; i < assembler.instructions().size(); i++) {
+            System.out.printf("%d = %s\n", i, assembler.instructions().get(i));
+        }
 
         final Emulator emulator = new Emulator(assembler.instructions());
         emulator.emulate();
-        emulator.dumpRegisters();
     }
 }
