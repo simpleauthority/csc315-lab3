@@ -140,7 +140,11 @@ public class Emulator {
                 case SLL -> writeRegister(inst.rd(), rt << inst.shamt());
                 case SUB -> writeRegister(inst.rd(), rs - rt);
                 case SLT -> writeRegister(inst.rd(), rs < rt ? 1 : 0);
-                case JR -> programCounter = rs;
+                case JR -> {
+                    programCounter = rs;
+                    System.out.printf("Program counter set to %d\n", programCounter);
+                    return;
+                }
             }
         } else if (currentInstruction instanceof IFormatInstruction inst) {
             final int rs = readRegister(inst.rs());
@@ -150,14 +154,20 @@ public class Emulator {
                 case ADDI -> writeRegister(inst.rt(), rs + inst.imm());
                 case BEQ -> {
                     if (rs == rt) {
-                        programCounter += inst.imm();
+                        programCounter += 1 + inst.imm();
+                        System.out.printf("Program counter set to %d\n", programCounter);
                         return;
+                    } else {
+                        System.out.println("No branch.");
                     }
                 }
                 case BNE -> {
                     if (rs != rt) {
-                        programCounter += inst.imm();
+                        programCounter += 1 + inst.imm();
+                        System.out.printf("Program counter set to %d\n", programCounter);
                         return;
+                    } else {
+                        System.out.println("No branch.");
                     }
                 }
                 case LW -> writeRegister(inst.rt(), readMemory(rs + inst.imm()));
@@ -165,16 +175,20 @@ public class Emulator {
             }
         } else if (currentInstruction instanceof JFormatInstruction inst) {
             switch (inst.opcode()) {
-                case J -> programCounter = inst.address();
+                case J -> {
+                    programCounter = inst.address();
+                    System.out.printf("Program counter set to %d\n", programCounter);
+                    return;
+                }
                 case JAL -> {
                     writeRegister(31, programCounter + 1);
                     programCounter = inst.address();
+                    System.out.printf("Program counter set to %d\n", programCounter);
                     return;
                 }
             }
         }
 
         programCounter++;
-        dumpRegisters();
     }
 }

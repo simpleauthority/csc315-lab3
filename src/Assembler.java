@@ -139,13 +139,21 @@ public class Assembler {
 
                             if (opcode == Opcode.BEQ || opcode == Opcode.BNE) {
                                 final int begin = addr + 1;
+                                System.out.printf("Assembler: BEQ/BNE begin value = %d\n", begin);
+                                System.out.printf("Assembler: BEQ/BNE imm value = %d\n", immediate);
+
                                 if (immediate < begin) {
+                                    System.out.println("Assembler: Immediate < begin");
                                     immediate -= begin;
                                 } else if (immediate > begin) {
-                                    immediate += begin;
+                                    System.out.println("Assembler: Immediate > begin");
+                                    immediate -= begin;
                                 } else {
+                                    System.out.println("Assembler: Immediate == begin");
                                     immediate = 0;
                                 }
+
+                                System.out.printf("Assembler: BEQ/BNE imm set to %d\n", immediate);
                             }
                         }
 
