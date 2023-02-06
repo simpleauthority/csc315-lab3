@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="288de3ff-a09d-4a10-ac45-b5546e6eac74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3_fib.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3_test3.asm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assembler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Emulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Emulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InteractiveRepl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScriptInterpreter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sum_10.asm" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +65,16 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="lab3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab3" />
       <module name="lab3" />
-      <option name="PROGRAM_PARAMETERS" value="lab3_fib.asm" />
+      <option name="PROGRAM_PARAMETERS" value="run/test/lab3_fib.asm" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,7 +100,7 @@
       <workItem from="1674580799234" duration="6309000" />
       <workItem from="1675451572862" duration="10340000" />
       <workItem from="1675646087675" duration="4313000" />
-      <workItem from="1675703042088" duration="2387000" />
+      <workItem from="1675703042088" duration="5732000" />
     </task>
     <servers />
   </component>
