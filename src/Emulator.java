@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class Emulator {
@@ -11,16 +12,29 @@ public class Emulator {
         this.instructions = instructions;
     }
 
+    /**
+     * Reads the value stored in the given register
+     * @param registerIdx the register to read
+     * @return the value stored in the register
+     */
     public final int readRegister(final int registerIdx) {
         System.out.printf("Retrieved value %d from register %d (%s)\n", registers[registerIdx], registerIdx, Register.getByRegisterNumber(registerIdx).registerName());
         return registers[registerIdx];
     }
 
+    /**
+     * Writes the given value to the given register.
+     * @param registerIdx the register to write to
+     * @param value the value to write
+     */
     public final void writeRegister(final int registerIdx, final int value) {
         System.out.printf("Writing %d into register %d (%s)\n", value, registerIdx, Register.getByRegisterNumber(registerIdx).registerName());
         registers[registerIdx] = value;
     }
 
+    /**
+     * Retrieves all (supported) registers and displays the data stored in them.
+     */
     public final void dumpRegisters() {
         final String format = "pc = %-10d\n" +
                 "$0 = %-11d$v0 = %-10d$v1 = %-10d$a0 = %-10d\n" +
@@ -44,72 +58,123 @@ public class Emulator {
         );
     }
 
+    /**
+     * Reads the value stored in the given memory cell.
+     * @param memoryIdx the memory cell to read
+     * @return the value stored in the memory cell
+     */
     public final int readMemory(final int memoryIdx) {
         System.out.printf("Retrieved value %d from memory addr %d\n", memory[memoryIdx], memoryIdx);
         return memory[memoryIdx];
     }
 
+    /**
+     * Writes the given value to the given memory cell.
+     * @param memoryIdx the memory cell to write to
+     * @param value the value to write
+     */
     public final void writeMemory(final int memoryIdx, final int value) {
         System.out.printf("Writing %d into memory addr %d\n", value, memoryIdx);
         memory[memoryIdx] = value;
     }
 
+    /**
+     * Retrieves the memory cells between the given lower and upper address bounds, inclusive.
+     * @param lower the inclusive lower bound memory address
+     * @param upper the inclusive upper bound memory address
+     */
+    public final void dumpMemory(int lower, int upper) {
+        for (int i = lower; i <= upper; i++) {
+            System.out.printf("[%d] = %d\n", i, memory[i]);
+        }
+    }
+
+    /**
+     * Resets the emulator. All registers and memory cells are reinitialized to zero, and the program
+     * counter is reset to 0.
+     */
+    public void reset() {
+        Arrays.fill(registers, 0);
+        Arrays.fill(memory, 0);
+        programCounter = 0;
+    }
+
+    /**
+     * Runs all remaining instructions from the current program counter.
+     */
     public void emulate() {
         while (programCounter < instructions.size()) {
-            final Instruction currentInstruction = instructions.get(programCounter);
+            emulateOneInstruction();
+        }
+    }
 
-            System.out.printf("Running: %s\n", currentInstruction);
+    /**
+     * Runs N instructions from the current program counter.
+     *
+     * @param n how many instructions to run from the current program counter
+     */
+    public void emulateNInstructions(final int n) {
+        int executed = 0;
+        while (executed < n) {
+            emulateOneInstruction();
+            executed++;
+        }
+    }
 
-            if (currentInstruction instanceof RFormatInstruction inst) {
-                final int rs = readRegister(inst.rs());
-                final int rt = readRegister(inst.rt());
+    /**
+     * Runs a single instruction pointed to by the current program counter.
+     */
+    public void emulateOneInstruction() {
+        final Instruction currentInstruction = instructions.get(programCounter);
 
-                switch (inst.opcode()) {
-                    case ADD -> writeRegister(inst.rd(), rs + rt);
-                    case AND -> writeRegister(inst.rd(), rs & rt);
-                    case OR -> writeRegister(inst.rd(), rs | rt);
-                    case SLL -> writeRegister(inst.rd(), rt << inst.shamt());
-                    case SUB -> writeRegister(inst.rd(), rs - rt);
-                    case SLT -> writeRegister(inst.rd(), rs < rt ? 1 : 0);
-                    case JR -> {
-                        programCounter = rs;
-                        continue;
+        System.out.printf("Running: %s\n", currentInstruction);
+
+        if (currentInstruction instanceof RFormatInstruction inst) {
+            final int rs = readRegister(inst.rs());
+            final int rt = readRegister(inst.rt());
+
+            switch (inst.opcode()) {
+                case ADD -> writeRegister(inst.rd(), rs + rt);
+                case AND -> writeRegister(inst.rd(), rs & rt);
+                case OR -> writeRegister(inst.rd(), rs | rt);
+                case SLL -> writeRegister(inst.rd(), rt << inst.shamt());
+                case SUB -> writeRegister(inst.rd(), rs - rt);
+                case SLT -> writeRegister(inst.rd(), rs < rt ? 1 : 0);
+                case JR -> programCounter = rs;
+            }
+        } else if (currentInstruction instanceof IFormatInstruction inst) {
+            final int rs = readRegister(inst.rs());
+            final int rt = readRegister(inst.rt());
+
+            switch (inst.opcode()) {
+                case ADDI -> writeRegister(inst.rt(), rs + inst.imm());
+                case BEQ -> {
+                    if (rs == rt) {
+                        programCounter += inst.imm();
+                        return;
                     }
                 }
-            } else if (currentInstruction instanceof IFormatInstruction inst) {
-                final int rs = readRegister(inst.rs());
-                final int rt = readRegister(inst.rt());
-
-                switch (inst.opcode()) {
-                    case ADDI -> writeRegister(inst.rt(), rs + inst.imm());
-                    case BEQ -> {
-                        if (rs == rt) {
-                            programCounter += inst.imm();
-                            continue;
-                        }
+                case BNE -> {
+                    if (rs != rt) {
+                        programCounter += inst.imm();
+                        return;
                     }
-                    case BNE -> {
-                        if (rs != rt) {
-                            programCounter += inst.imm();
-                            continue;
-                        }
-                    }
-                    case LW -> writeRegister(inst.rt(), readMemory(rs + inst.imm()));
-                    case SW -> writeMemory(rs + inst.imm(), rt);
                 }
-            } else if (currentInstruction instanceof JFormatInstruction inst) {
-                switch (inst.opcode()) {
-                    case J -> programCounter = inst.address();
-                    case JAL -> {
-                        writeRegister(31, programCounter + 1);
-                        programCounter = inst.address();
-                        continue;
-                    }
+                case LW -> writeRegister(inst.rt(), readMemory(rs + inst.imm()));
+                case SW -> writeMemory(rs + inst.imm(), rt);
+            }
+        } else if (currentInstruction instanceof JFormatInstruction inst) {
+            switch (inst.opcode()) {
+                case J -> programCounter = inst.address();
+                case JAL -> {
+                    writeRegister(31, programCounter + 1);
+                    programCounter = inst.address();
+                    return;
                 }
             }
-
-            programCounter++;
-            dumpRegisters();
         }
+
+        programCounter++;
+        dumpRegisters();
     }
 }

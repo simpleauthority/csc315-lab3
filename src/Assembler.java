@@ -140,9 +140,9 @@ public class Assembler {
                             if (opcode == Opcode.BEQ || opcode == Opcode.BNE) {
                                 final int begin = addr + 1;
                                 if (immediate < begin) {
-                                    immediate += begin;
-                                } else if (immediate > begin) {
                                     immediate -= begin;
+                                } else if (immediate > begin) {
+                                    immediate += begin;
                                 } else {
                                     immediate = 0;
                                 }

@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 public class lab3 {
     public static void main(final String[] args) {
+        new lab3().runProgram(args);
+    }
+
+    public void runProgram(final String[] args) {
         if (args.length < 1) {
             System.err.println("Invalid syntax.");
             System.err.printf("Syntax: java lab3 <file>%n");
@@ -14,7 +18,23 @@ public class lab3 {
             return;
         }
 
-        final File file = new File(args[0]);
+        final Assembler assembler = new Assembler(readFile(args[0]));
+        assembler.assemble();
+        assembler.labelAddresses().forEach((lab, addr) -> System.out.printf("%s->%d\n", lab, addr));
+        for (int i = 0; i < assembler.instructions().size(); i++) {
+            System.out.printf("%d = %s\n", i, assembler.instructions().get(i));
+        }
+
+        final Emulator emulator = new Emulator(assembler.instructions());
+        if (args.length < 2) {
+            new InteractiveRepl(emulator).start();
+        } else {
+            new ScriptInterpreter(emulator, readFile(args[1])).interpret();
+        }
+    }
+
+    private List<String> readFile(final String path) {
+        final File file = new File(path);
         if (!file.exists()) {
             throw new RuntimeException("The specified file does not exist.");
         } else if (!file.canRead()) {
@@ -46,14 +66,6 @@ public class lab3 {
             System.exit(1);
         }
 
-        final Assembler assembler = new Assembler(lines);
-        assembler.assemble();
-        assembler.labelAddresses().forEach((lab, addr) -> System.out.printf("%s->%d\n", lab, addr));
-        for (int i = 0; i < assembler.instructions().size(); i++) {
-            System.out.printf("%d = %s\n", i, assembler.instructions().get(i));
-        }
-
-        final Emulator emulator = new Emulator(assembler.instructions());
-        emulator.emulate();
+        return lines;
     }
 }
